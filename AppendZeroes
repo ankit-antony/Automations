@@ -1,0 +1,2 @@
+Get-ChildItem . | Where{$_.basename -match "^\d+$"} | 
+ForEach{$NewName = "{0:d4}$($_.extension)" -f [int]$_.basename;rename-item $_.fullname $newname}
