@@ -1,0 +1,7 @@
+# Append zeroes to file names 1.txt, 2.txt, and so on, upto 4-dgits. Identify whether the no. is a 4-digit no., if not, add zeroes. example: 1.txt - 0001.txt, 2.txt - 0002.txt
+Get-ChildItem . | Where{$_.basename -match "^\d+$"} | 
+ForEach{$NewName = "{0:d4}$($_.extension)" -f [int]$_.basename;rename-item $_.fullname $newname}
+
+# Move files from a folder, after recursive search, to another destination
+Get-ChildItem -Path "D:\imaages\" -Recurse -File | Move-Item -Destination "D:\copyofimages\"
+
